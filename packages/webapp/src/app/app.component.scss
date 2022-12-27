@@ -22,12 +22,21 @@
 }
 .user-list {
   grid-area: user-list;
+  padding: 15px;
+
+  mat-list-item.current-user {
+    background-color: beige;
+  }
 }
 .chat-area {
   grid-area: chat-area;
   mat-card {
     max-width: 400px;
     margin-bottom: 15px;
+
+    &.current-user {
+      background-color: darkgray;
+    }
   }
 }
 .chat-input {

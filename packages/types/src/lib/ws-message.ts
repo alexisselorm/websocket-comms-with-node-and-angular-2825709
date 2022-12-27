@@ -4,7 +4,8 @@ export type WsMessage =
   | ChatMessage
   | ChatRelayMessage
   | SystemNotice
-  | LoginMessage;
+  | LoginMessage
+  | UserListMessage;
 
 export interface ChatMessage {
   event: 'chat';
@@ -25,4 +26,9 @@ export interface SystemNotice {
 export interface LoginMessage {
   event: 'login';
   payload: User;
+}
+
+export interface UserListMessage {
+  event: 'userList';
+  users: User[];
 }
