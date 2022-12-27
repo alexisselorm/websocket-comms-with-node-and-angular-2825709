@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type WsMessage = ChatMessage | ChatRelayMesage;
+export type WsMessage = ChatMessage | ChatRelayMesage | SystemNotice;
 
 export interface ChatMessage {
   event: 'chat';
@@ -10,4 +10,9 @@ export interface ChatMessage {
 export interface ChatRelayMesage {
   contents: string;
   author: User;
+}
+
+export interface SystemNotice {
+  event: 'systemNotice';
+  contents: string;
 }

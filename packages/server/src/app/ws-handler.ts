@@ -19,8 +19,8 @@ export class WsHandler {
   }
 
   onSocketConnected(socket: WebSocket, request: IncomingMessage) {
-    console.log(`New Websocket connections: ${request.url}`);
-    this.userManager.add(socket);
+    console.log(`New Websocket connection`);
+    this.userManager.add(socket, request);
     socket.on('message', (data: RawData) => this.onSocketMessage(socket, data));
     socket.on('close', (code, reason) =>
       this.onSocketClosed(socket, code, reason)
