@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AppService } from './app.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -17,6 +18,7 @@ import { AppService } from './app.service';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
   ],
   providers: [AppService],
   bootstrap: [AppComponent],
