@@ -31,7 +31,12 @@ export class WsHandler {
     const payload: WsMessage = JSON.parse(`${data}`);
     console.log(`Received message: ${JSON.stringify(payload)}`);
 
-    this.userManager.sendToAll(payload);
+    switch (payload.event) {
+      case 'chat': {
+        this.userManager.relayChat(socket, payload);
+        break;
+      }
+    }
   }
 
   onSocketClosed(socket: WebSocket, code: number, reason: Buffer) {

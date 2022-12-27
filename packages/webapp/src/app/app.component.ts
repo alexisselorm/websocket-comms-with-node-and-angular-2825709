@@ -12,18 +12,10 @@ export class AppComponent implements OnInit {
   messages: ChatRelayMessage[] = [];
   constructor(private appService: AppService) {}
   ngOnInit(): void {
-    this.messages = [
-      {
-        event: 'chatRelay',
-        author: { name: 'Jane', id: 1 },
-        contents: 'Hi this is Jane',
-      },
-      {
-        event: 'chatRelay',
-        author: { name: 'Henry', id: 1 },
-        contents: 'Hi I am Henry',
-      },
-    ];
+    // this.appService.chatMessage$.subscribe(message =>this.messages.push(message))
+    this.appService.chatMessage$.subscribe(
+      (message) => (this.messages = [...this.messages, message])
+    );
 
     this.appService.user$.subscribe((user) => (this.currentUser = user));
   }
@@ -31,5 +23,10 @@ export class AppComponent implements OnInit {
     const name = userNameInput.value;
     console.log(`Connecting as ${userNameInput.value}`);
     this.appService.connect(name);
+  }
+
+  send(chatInput: HTMLInputElement) {
+    this.appService.send(chatInput.value);
+    chatInput.value = '';
   }
 }
